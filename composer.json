@@ -13,6 +13,9 @@
   "require-dev": {
     "phpunit/phpunit": "^9.5"
   },
+  "scripts": {
+    "test": "vendor/bin/phpunit --testdox --verbose --colors tests"
+  },
   "autoload": {
     "psr-4": {
       "OKO\\IptcMapper\\": "src"
