@@ -23,6 +23,6 @@ final class ImageInfoTest extends TestCase
     {
         $imageInfo = new ImageInfo(self::TEST_FILE);
 
-        $this->assertEquals(true, is_array($imageInfo->getAllData()));
+        $this->assertEquals(true, is_array($imageInfo->rawData));
     }
 }
