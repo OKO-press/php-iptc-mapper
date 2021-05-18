@@ -7,7 +7,7 @@ namespace OKO\IptcMapper;
 use Exception;
 
 /**
- * Image info.
+ * Image info loader.
  * 
  * @version 1.0.0
  * @author Konrad Fedorczyk <konrad.fedorczyk@oko.press>
@@ -18,6 +18,9 @@ class ImageInfo
     /** @var array $imageInfo */
     private $imageInfo;
 
+    /** @var string $filePath */
+    private $filePath;
+
     /**
      * Load file & extract info.
      * 
@@ -26,15 +29,12 @@ class ImageInfo
      */
     public function __construct(string $path)
     {
-        $this->imageInfo = $this->loadFile($path);
-    }
+        if (!file_exists($path)) {
+            throw new Exception("File does not exist.");
+        }
 
-    /**
-     * Get all data.
-     */
-    public function getAllData()
-    {
-        return $this->imageInfo;
+        $this->filePath = $path;
+        $this->imageInfo = $this->loadFile($path);
     }
 
     /**
@@ -42,7 +42,13 @@ class ImageInfo
      */
     public function __get(string $name)
     {
-        return $this->imageInfo[$name]; 
+        if ($name == 'filePath') {
+            return $this->filePath;
+        } elseif ($name == 'rawData') {
+            return $this->imageInfo;
+        } else {
+            return $this->imageInfo[$name];
+        }
     }
 
     /**
@@ -62,10 +68,6 @@ class ImageInfo
      */
     private function loadFile(string $path): array
     {
-        if (!file_exists($path)) {
-            throw new Exception("File does not exist.");
-        }
-
         /** @var array $imageInfo */
         $imageInfo = [];
 
