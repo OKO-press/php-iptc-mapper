@@ -27,3 +27,9 @@ $title = $imageMeta->title;
 | copyright_note    | string        |                       |
 | date_created      | string        | YYYY-MM-DD            |
 | time_created      | string        | HH:MM:SS              |
+
+## Tests
+
+```bash
+composer test
+```
