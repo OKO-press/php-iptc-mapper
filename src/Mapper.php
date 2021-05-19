@@ -7,6 +7,7 @@ namespace OKO\IptcMapper;
 use OKO\IptcMapper\ImageInfo;
 use OKO\IptcMapper\Iptc;
 use OKO\IptcMapper\Map;
+use OKO\IptcMapper\Formatter;
 
 use Exception;
 
@@ -66,7 +67,7 @@ class Mapper
 
         foreach ($map as $k => $v) {
             if (isset($this->rawIptc->{$v["key"]})) {
-                $this->meta[$k] = $this->rawIptc->{$v["key"]}[0]; 
+                $this->meta[$k] = Formatter::{$v['formatter']}($this->rawIptc->{$v["key"]});
             } else {
                 $this->meta[$k] = null;  
             }

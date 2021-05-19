@@ -30,6 +30,8 @@ final class IptcTest extends TestCase
         $itpcMap = new Iptc($this->imageInfo);
 
         $rawData = $itpcMap->getRawData();
+
+        var_dump($rawData);
          
         $this->assertEquals(true, is_array($rawData));
     }
