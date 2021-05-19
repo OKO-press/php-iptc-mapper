@@ -5,7 +5,7 @@
 Usage example:
 
 ```php
-use OKO\IptcMapper\Map as IptcMapper;
+use OKO\IptcMapper\Mapper as IptcMapper;
 
 $imageMeta = new IptcMapper("20210512_AKU_protest-XR_001.jpg");
 $title = $imageMeta->title;
