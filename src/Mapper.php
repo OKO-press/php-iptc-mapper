@@ -6,6 +6,7 @@ namespace OKO\IptcMapper;
 
 use OKO\IptcMapper\ImageInfo;
 use OKO\IptcMapper\Iptc;
+use OKO\IptcMapper\Map;
 
 use Exception;
 
@@ -18,13 +19,6 @@ use Exception;
  */
 class Mapper
 {
-    const MAP = [
-        "title" => [
-            "key"           => "2#005",
-            "formatter"     => null
-        ],
-    ];
-
     private $imageInfo;
 
     private $meta;
@@ -68,7 +62,9 @@ class Mapper
      */
     private function createMap()
     {
-        foreach (self::MAP as $k => $v) {
+        $map = Map::iptcMap();
+
+        foreach ($map as $k => $v) {
             if (isset($this->rawIptc->{$v["key"]})) {
                 $this->meta[$k] = $this->rawIptc->{$v["key"]}[0]; 
             } else {
