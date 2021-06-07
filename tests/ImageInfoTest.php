@@ -11,7 +11,8 @@ use OKO\IptcMapper\ImageInfo;
 
 final class ImageInfoTest extends TestCase 
 {
-    const TEST_FILE = __DIR__ . "/test-files/20210512_AKU_protest-XR_001.jpg";
+    const TEST_FILE         = __DIR__ . "/test-files/20210512_AKU_protest-XR_001.jpg";
+    const TEST_FILE_LONG    = __DIR__ . "/test-files/20210603-aku-cichanouska-w-warszawie-022.jpg";
 
     public function testNonExistentFile(): void
     {
