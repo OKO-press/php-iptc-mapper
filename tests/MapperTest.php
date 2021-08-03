@@ -42,4 +42,12 @@ final class MapperTest extends TestCase
 
         $this->assertEquals(true, is_array($map));
     }
+
+    public function testBogusDate(): void 
+    {
+        $map = Map::iptcMap();
+        $mapper = new Mapper(ImageInfoTest::TEST_FILE_BOGUS_DATE);
+        var_dump($mapper->time_created);
+        $this->assertEquals(true, is_string($mapper->time_created));
+    }
 }
